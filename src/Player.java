@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Player {
 
     private String input;
-    private int count = 0;
+    private int countP = 0;
     public Player(){
 
         this.input = input();
@@ -24,7 +24,7 @@ public class Player {
 
     public int count(){
 
-        return ++count;
+        return ++countP;
     }
 
 

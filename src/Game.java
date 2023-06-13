@@ -1,5 +1,7 @@
 package src;
 
+import java.util.TimerTask;
+
 public class Game {
 
     private Word word;
@@ -17,13 +19,28 @@ public class Game {
         startGame();
     }
 
+    public void resetGame(){
+        timer.cancel();
+        startGame();
+    }
+
     public void startGame(){
 
-        timer.schedule(1000);
+
         System.out.println("------------------------------");
         System.out.println("TYPE A WORD CONTAINING: ");
         char[] word1 = word.generateWord();
         System.out.println(word1);
+        timer.schedule(1000);
+
+//        TimerTask timerTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                System.out.println("Timer: " + timer.getCount());
+//                timer.incrementCount();
+//            }
+//        };
+
         String input = player.input();
 
         String check = new String(word1);
@@ -33,13 +50,10 @@ public class Game {
             player.count();
             System.out.println(player.count());
             startGame();
-            timer.cancel();
-            timer.schedule(1000);
         }else{
             System.out.println("x");
-            startGame();
-            timer.cancel();
-            timer.schedule(1000);
+            resetGame();
+
         }
 
 
